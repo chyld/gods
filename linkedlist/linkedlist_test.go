@@ -13,6 +13,14 @@ func TestAdd(t *testing.T) {
 	}
 }
 
+func TestString(t *testing.T) {
+	var l LinkedList
+	l.Add("Alpha")
+	l.Add("Beta")
+	l.Add("Gamma")
+	t.Logf("String: %#v", l.String())
+}
+
 func TestIsEmpty(t *testing.T) {
 	var l LinkedList
 
