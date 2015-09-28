@@ -12,6 +12,10 @@ func (q *Queue) Enqueue(item interface{}) {
 
 // Dequeue todo
 func (q *Queue) Dequeue() interface{} {
+	if q.IsEmpty() {
+		return nil
+	}
+
 	item := q.data[0]
 	q.data = q.data[1:]
 	return item

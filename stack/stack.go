@@ -12,6 +12,10 @@ func (s *Stack) Push(item interface{}) {
 
 // Pop todo
 func (s *Stack) Pop() interface{} {
+	if s.IsEmpty() {
+		return nil
+	}
+
 	last := len(s.data) - 1
 	item := s.data[last]
 	s.data = s.data[:last]

@@ -29,15 +29,20 @@ func TestPush(t *testing.T) {
 
 func TestPop(t *testing.T) {
 	var s Stack
+	blank := s.Pop()
+	if blank != nil {
+		t.Fatalf("Pop'd item should be nil")
+	}
+
 	s.Push(3)
 	s.Push(5)
 	s.Push(7)
 	item := s.Pop()
 	item = item.(int)
-
 	if item != 7 {
 		t.Fatalf("Pop'd item should be 7")
 	}
+
 	if s.Size() != 2 {
 		t.Fatalf("Stack size should be 2")
 	}

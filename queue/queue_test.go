@@ -29,16 +29,27 @@ func TestEnqueue(t *testing.T) {
 
 func TestDequeue(t *testing.T) {
 	var q Queue
+	blank := q.Dequeue()
+	if blank != nil {
+		t.Fatalf("Dequeued nothing")
+	}
+
 	q.Enqueue(3)
+	one := q.Dequeue()
+	one = one.(int)
+	if one != 3 {
+		t.Fatalf("Dequeued item should be 1")
+	}
+
 	q.Enqueue(5)
 	q.Enqueue(7)
 	first := q.Dequeue()
 	first = first.(int)
 
-	if first != 3 {
-		t.Fatalf("First dequeued item should be a 3")
+	if first != 5 {
+		t.Fatalf("First dequeued item should be a 5")
 	}
-	if q.Size() != 2 {
-		t.Fatalf("After dequeue, should have 2 items remaining")
+	if q.Size() != 1 {
+		t.Fatalf("After dequeue, should have 1 items remaining")
 	}
 }
